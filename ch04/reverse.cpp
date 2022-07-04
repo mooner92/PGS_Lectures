@@ -5,7 +5,7 @@
 
 using namespace std;
 
-string reverse(const string& str)
+string reverse(const string &str)
 {
 	stack<char> stk;
 
@@ -14,7 +14,8 @@ string reverse(const string& str)
 
 	string res;
 
-	while (!stk.empty()) {
+	while (!stk.empty())
+	{
 		res += stk.top();
 		stk.pop();
 	}
@@ -23,15 +24,16 @@ string reverse(const string& str)
 }
 
 template <typename T>
-void reverse(vector<T>& vec)
+void reverse(vector<T> &vec)
 {
 	stack<T> stk;
-	for (const auto& e : vec)
+	for (const auto &e : vec)
 		stk.push(e);
 
-//	stack<T, vector<T>> stk(vec);
+	//	stack<T, vector<T>> stk(vec);
 
-	for (int i = 0; i < vec.size(); i++) {
+	for (int i = 0; i < vec.size(); i++)
+	{
 		vec[i] = stk.top();
 		stk.pop();
 	}
@@ -45,12 +47,12 @@ int main()
 	cout << str1 << " -> " << reverse(str1) << endl;
 	cout << str2 << " -> " << reverse(str2) << endl;
 
-	vector<int> vec {10, 20, 30, 40, 50};
-//	vector<string> vec {"John", "loves", "Jane"};
+	vector<int> vec{10, 20, 30, 40, 50};
+	//	vector<string> vec {"John", "loves", "Jane"};
 
 	reverse<int>(vec);
 
 	for (auto e : vec)
 		cout << e << ", ";
 	cout << endl;
-}
+} /**/
