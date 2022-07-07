@@ -24,25 +24,28 @@ public:
 
 	bool find(int value)
 	{
-		auto& entries = data[hash(value)];
+		auto &entries = data[hash(value)];
 		return std::find(entries.begin(), entries.end(), value) != entries.end();
 	}
 
 	void erase(int value)
 	{
-		auto& entries = data[hash(value)];
+		auto &entries = data[hash(value)];
 		auto it = std::find(entries.begin(), entries.end(), value);
 
-		if (it != entries.end()) {
+		if (it != entries.end())
+		{
 			entries.erase(it);
 		}
 	}
 
 	void print()
 	{
-		for (int i = 0; i < sz; i++) {
+		for (int i = 0; i < sz; i++)
+		{
 			std::cout << i << ": ";
-			for (auto n : data[i]) {
+			for (auto n : data[i])
+			{
 				std::cout << n << ", ";
 			}
 			std::cout << std::endl;
@@ -77,3 +80,4 @@ int main()
 
 	num_set.print();
 }
+/**/
