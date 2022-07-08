@@ -3,27 +3,28 @@
 struct Node
 {
 	int data;
-	Node* next;
+	Node *next;
 };
 
 class LinkedList
 {
 private:
-	Node* head;
+	Node *head;
 
 public:
-	LinkedList() : head(NULL) {};
+	LinkedList() : head(NULL){};
 
 	~LinkedList()
 	{
-		while (!empty()) {
+		while (!empty())
+		{
 			pop_front();
 		}
 	}
 
 	void push_front(int val)
 	{
-		Node* new_node = new Node {val, head};
+		Node *new_node = new Node{val, head};
 
 		if (head != NULL)
 			new_node->next = head;
@@ -36,7 +37,7 @@ public:
 		if (head == NULL)
 			return;
 
-		Node* first = head;
+		Node *first = head;
 		head = head->next;
 		delete first;
 	}
@@ -48,9 +49,10 @@ public:
 
 	void print_all() const
 	{
-		Node* curr = head;
+		Node *curr = head;
 
-		while (curr != NULL) {
+		while (curr != NULL)
+		{
 			std::cout << curr->data << ", ";
 			curr = curr->next;
 		}
@@ -73,4 +75,3 @@ int main()
 	ll.push_front(40);
 	ll.print_all();
 }
-
