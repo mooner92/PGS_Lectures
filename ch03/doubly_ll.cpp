@@ -4,8 +4,8 @@ template <typename T>
 struct Node
 {
 	T data;
-	Node* prev;
-	Node* next;
+	Node *prev;
+	Node *next;
 };
 
 template <typename T>
@@ -13,39 +13,39 @@ class DoublyLinkedList
 {
 private:
 	int count;
-	Node<T>* header;
-	Node<T>* trailer;
+	Node<T> *header;
+	Node<T> *trailer;
 
 public:
 	class iterator
 	{
 	private:
-		Node<T>* ptr;
+		Node<T> *ptr;
 
 	public:
 		iterator() : ptr(NULL) {}
-		iterator(Node<T>* p) : ptr(p) {}
+		iterator(Node<T> *p) : ptr(p) {}
 
-		T& operator*() { return ptr->data; }
+		T &operator*() { return ptr->data; }
 
-		iterator& operator++()	// ++it
+		iterator &operator++() // ++it
 		{
 			ptr = ptr->next;
 			return *this;
 		}
 
-		iterator& operator--()	// --it
+		iterator &operator--() // --it
 		{
 			ptr = ptr->prev;
 			return *this;
 		}
 
-		bool operator==(const iterator& it) const
+		bool operator==(const iterator &it) const
 		{
 			return ptr == it.ptr;
 		}
 
-		bool operator!=(const iterator& it) const
+		bool operator!=(const iterator &it) const
 		{
 			return ptr != it.ptr;
 		}
@@ -57,15 +57,16 @@ public:
 	DoublyLinkedList()
 	{
 		count = 0;
-		header = new Node<T> {T(), NULL, NULL};
-		trailer = new Node<T> {T(), NULL, NULL};
+		header = new Node<T>{T(), NULL, NULL};
+		trailer = new Node<T>{T(), NULL, NULL};
 		header->next = trailer;
 		trailer->prev = header;
 	}
 
 	~DoublyLinkedList()
 	{
-		while (!empty()) {
+		while (!empty())
+		{
 			pop_front();
 		}
 
@@ -84,29 +85,29 @@ public:
 	}
 
 	// pos가 가리키는 노드 앞에 val 값을 갖는 새로운 노드를 삽입
-	void insert(const iterator& pos, const T& val)
+	void insert(const iterator &pos, const T &val)
 	{
-		Node<T>* p = pos.ptr;
-		Node<T>* new_node = new Node<T> {val, p->prev, p};
+		Node<T> *p = pos.ptr;
+		Node<T> *new_node = new Node<T>{val, p->prev, p};
 		new_node->prev->next = new_node;
 		new_node->next->prev = new_node;
 		count++;
 	}
 
-	void push_front(const T& val)
+	void push_front(const T &val)
 	{
 		insert(begin(), val);
 	}
 
-	void push_back(const T& val)
+	void push_back(const T &val)
 	{
 		insert(end(), val);
 	}
 
 	// pos가 가리키는 노드를 삭제
-	void erase(const iterator& pos)
+	void erase(const iterator &pos)
 	{
-		Node<T>* p = pos.ptr;
+		Node<T> *p = pos.ptr;
 		p->prev->next = p->next;
 		p->next->prev = p->prev;
 		delete p;
@@ -125,9 +126,9 @@ public:
 			erase(--end());
 	}
 
-	iterator find(const T& val)
+	iterator find(const T &val)
 	{
-		Node<T>* curr = header->next;
+		Node<T> *curr = header->next;
 
 		while (curr->data != val && curr != trailer)
 			curr = curr->next;
@@ -163,7 +164,7 @@ int main()
 
 	// ll: header -> 10 -> 50 -> 20 -> 30 -> trailer
 
-	for (const auto& a : ll)
+	for (const auto &a : ll)
 		cout << a << ", ";
 	cout << endl;
 }

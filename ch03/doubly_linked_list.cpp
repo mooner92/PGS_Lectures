@@ -3,30 +3,31 @@
 struct Node
 {
 	int data;
-	Node* prev;
-	Node* next;
+	Node *prev;
+	Node *next;
 };
 
 class DoublyLinkedList
 {
 private:
 	int count;
-	Node* header;
-	Node* trailer;
+	Node *header;
+	Node *trailer;
 
 public:
 	DoublyLinkedList()
 	{
 		count = 0;
-		header = new Node {0, NULL, NULL};
-		trailer = new Node {0, NULL, NULL};
+		header = new Node{0, NULL, NULL};
+		trailer = new Node{0, NULL, NULL};
 		header->next = trailer;
 		trailer->prev = header;
 	}
 
 	~DoublyLinkedList()
 	{
-		while (!empty()) {
+		while (!empty())
+		{
 			pop_front();
 		}
 
@@ -35,9 +36,9 @@ public:
 	}
 
 	// 노드 p 앞에 val 값을 갖는 새로운 노드를 삽입
-	void insert(Node* p, int val)
+	void insert(Node *p, int val)
 	{
-		Node* new_node = new Node {val, p->prev, p};
+		Node *new_node = new Node{val, p->prev, p};
 		new_node->prev->next = new_node;
 		new_node->next->prev = new_node;
 		count++;
@@ -54,7 +55,7 @@ public:
 	}
 
 	// 노드 p를 삭제
-	void erase(Node* p)
+	void erase(Node *p)
 	{
 		p->prev->next = p->next;
 		p->next->prev = p->prev;
@@ -86,9 +87,10 @@ public:
 
 	void print_all() const
 	{
-		Node* curr = header->next;
+		Node *curr = header->next;
 
-		while (curr != trailer) {
+		while (curr != trailer)
+		{
 			std::cout << curr->data << ", ";
 			curr = curr->next;
 		}
@@ -98,9 +100,10 @@ public:
 
 	void print_reverse() const
 	{
-		Node* curr = trailer->prev;
+		Node *curr = trailer->prev;
 
-		while (curr != header) {
+		while (curr != header)
+		{
 			std::cout << curr->data << ", ";
 			curr = curr->prev;
 		}
