@@ -17,12 +17,13 @@ public:
 
 	~CircularQueue()
 	{
-		delete [] arr;
+		delete[] arr;
 	}
 
-	void enqueue(const T& e)
+	void enqueue(const T &e)
 	{
-		if (full()) {
+		if (full())
+		{
 			std::cout << "Overflow error!" << std::endl;
 			return;
 		}
@@ -34,7 +35,8 @@ public:
 
 	void dequeue()
 	{
-		if (empty()) {
+		if (empty())
+		{
 			std::cout << "Underflow error!" << std::endl;
 			return;
 		}
@@ -43,14 +45,14 @@ public:
 		count--;
 	}
 
-	const T& front() const { return arr[front_idx]; }
+	const T &front() const { return arr[front_idx]; }
 
 	bool empty() const { return count == 0; }
 	int full() const { return count == capacity; }
 	int size() const { return count; }
 
 private:
-	T* arr;
+	T *arr;
 	int front_idx;
 	int rear_idx;
 	int count;
@@ -67,15 +69,16 @@ int main()
 	q.enqueue(20);
 	q.enqueue(30);
 	q.enqueue(40);
-	q.enqueue(50);  // full 상태
+	q.enqueue(50); // full 상태
 	q.dequeue();
-	q.dequeue();    // 원소 2개 삭제
+	q.dequeue(); // 원소 2개 삭제
 	q.enqueue(60);
-	q.enqueue(70);  // full 상태
-	q.enqueue(80);  // 오버플로우 에러!
+	q.enqueue(70); // full 상태
+	q.enqueue(80); // 오버플로우 에러!
 
-	while (!q.empty()) {
-		auto& e = q.front();
+	while (!q.empty())
+	{
+		auto &e = q.front();
 		cout << e << ", ";
 		q.dequeue();
 	}
