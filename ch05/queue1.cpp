@@ -7,9 +7,9 @@ class Queue
 public:
 	Queue() {}
 
-	void enqueue(const T& e) { lst.push_back(e); }
+	void enqueue(const T &e) { lst.push_back(e); }
 	void dequeue() { lst.pop_front(); }
-	const T& front() const { return lst.front(); }
+	const T &front() const { return lst.front(); }
 
 	bool empty() const { return lst.empty(); }
 	int size() const { return lst.size(); }
@@ -31,8 +31,9 @@ int main()
 	cout << q.front() << endl;
 	q.enqueue(40);
 
-	while (!q.empty()) {
-		auto& e = q.front();
+	while (!q.empty())
+	{
+		auto &e = q.front();
 		cout << e << ", ";
 		q.dequeue();
 	}

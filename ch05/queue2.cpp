@@ -14,8 +14,9 @@ int main()
 	cout << q.front() << endl;
 	q.push(40);
 
-	while (!q.empty()) {
-		auto& e = q.front();
+	while (!q.empty())
+	{
+		auto &e = q.front();
 		cout << e << ", ";
 		q.pop();
 	}
