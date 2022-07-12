@@ -44,9 +44,9 @@ int main()
 {
 	hash_set num_set(7);
 
-	num_set.insert(10); // 3
-	num_set.insert(15); // 1
-	num_set.insert(20); // 6
+	num_set.insert(10);	 // 3
+	num_set.insert(15);	 // 1
+	num_set.insert(20);	 // 6
 	num_set.insert(100); // 2
 	num_set.print();
 
