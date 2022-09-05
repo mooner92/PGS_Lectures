@@ -9,7 +9,7 @@ using namespace std;
 const int N = 6;
 bool gVisited[N] = {};
 
-void dfs_recursion(const vector<vector<int>>& adj_list, int s)
+void dfs_recursion(const vector<vector<int>> &adj_list, int s)
 {
 	if (gVisited[s])
 		return;
@@ -21,14 +21,15 @@ void dfs_recursion(const vector<vector<int>>& adj_list, int s)
 		dfs_recursion(adj_list, v);
 }
 
-vector<int> dfs(const vector<vector<int>>& adj_list, int s)
+vector<int> dfs(const vector<vector<int>> &adj_list, int s)
 {
 	vector<bool> visited(adj_list.size(), false);
 	vector<int> visit_order;
 	stack<int> stk;
 	stk.push(s);
 
-	while (!stk.empty()) {
+	while (!stk.empty())
+	{
 		int v = stk.top();
 		stk.pop();
 
@@ -38,7 +39,8 @@ vector<int> dfs(const vector<vector<int>>& adj_list, int s)
 		visited[v] = true; // 정점 v를 방문
 		visit_order.push_back(v);
 
-		for (int a : adj_list[v]) {
+		for (int a : adj_list[v])
+		{
 			if (!visited[a])
 				stk.push(a);
 		}
@@ -47,14 +49,15 @@ vector<int> dfs(const vector<vector<int>>& adj_list, int s)
 	return visit_order;
 }
 
-vector<int> bfs(const vector<vector<int>>& adj_list, int s)
+vector<int> bfs(const vector<vector<int>> &adj_list, int s)
 {
 	vector<bool> visited(adj_list.size(), false);
 	vector<int> visit_order;
 	queue<int> q;
 	q.push(s);
 
-	while (!q.empty()) {
+	while (!q.empty())
+	{
 		int v = q.front();
 		q.pop();
 
@@ -64,7 +67,8 @@ vector<int> bfs(const vector<vector<int>>& adj_list, int s)
 		visited[v] = true; // 정점 v를 방문
 		visit_order.push_back(v);
 
-		for (int a : adj_list[v]) {
+		for (int a : adj_list[v])
+		{
 			if (!visited[a])
 				q.push(a);
 		}
@@ -81,8 +85,7 @@ int main()
 		{1, 5},
 		{0, 4},
 		{0, 1, 3},
-		{2}
-	};
+		{2}};
 
 	cout << "dfs_recursion: ";
 	dfs_recursion(adj_list, 0);
@@ -101,3 +104,4 @@ int main()
 		cout << n << ", ";
 	cout << endl;
 }
+//
